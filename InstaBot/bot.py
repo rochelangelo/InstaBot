@@ -17,6 +17,8 @@ class InstagramBot:
         self.login()
         self.carregaComenta_sorteio()
 
+        
+
     def login(self):
         driver = self.driver
         driver.get("https://www.instagram.com/")
@@ -64,6 +66,16 @@ class InstagramBot:
                 "@rick.hr",
                 "@laura.lima",
                 "@gipng",
+                "@fran_pimentel",
+                "@deborasouza.ofc",
+                "@pallomabasttos",
+                "@thamires7159",
+                "@joaovictorn.2016",
+                "@robsonlimafisica",
+                "@mt.ferreira.121",
+                "@duda_rcosta",
+                "@marcos.melo1",
+                "@elainecarvalho",
                 "@prisciow65",
                 "@jbarros0",
                 "@gabrieldasilvaarte",
@@ -74,11 +86,7 @@ class InstagramBot:
                 "@jrenattosilva",
                 "@_evd",
                 "@adonis_belo",
-                "@fran_pimentel",
-                "@deborasouza.ofc",
-                "@pallomabasttos",
-                "@thamires7159",
-                "@joaovictorn.2016",
+                "@kyldere"
             ]
             emojies = [
                 "😍",
@@ -98,6 +106,7 @@ class InstagramBot:
             ]
             driver = self.driver
             driver.get(self.link)
+            time.sleep(15)
 
             i = 0
             while (i < 100):
@@ -108,7 +117,7 @@ class InstagramBot:
                 c = 0
                 u = 0
                 e = 0
-                while (c < 4):
+                while (c < 2):
                     self.digite_como_pessoa(random.choice(comentarios), campo_comentario)
                     time.sleep(random.randint(10,30))
                     driver.find_element_by_xpath("//button[contains(text(), 'Publicar')]").click()
@@ -118,7 +127,7 @@ class InstagramBot:
                 
                 time.sleep(40)
 
-                while (u < 7):
+                while (u < 5):
                     self.digite_como_pessoa(random.choice(usuarios), campo_comentario)
                     time.sleep(random.randint(10,25))
                     driver.find_element_by_xpath("//button[contains(text(), 'Publicar')]").click()
@@ -128,7 +137,7 @@ class InstagramBot:
 
                 time.sleep(30)
 
-                while (e < 5):
+                while (e < 3):
                     self.digite_como_pessoa(random.choice(emojies), campo_comentario)
                     time.sleep(random.randint(5,15))
                     driver.find_element_by_xpath("//button[contains(text(), 'Publicar')]").click()
@@ -140,7 +149,13 @@ class InstagramBot:
                 
                 print("Rodada " + str(i) + " de comentarios")
                 i = i+1
-                time.sleep(120)
+                time.sleep(45)
+                
+                driver.get("https://www.instagram.com/")
+                driver.get(self.link)
+
+                driver.refresh()
+                time.sleep(30)
 
                 # https://www.instagram.com/p/CP3QldZsRhL/
         except Exception as e:
@@ -230,4 +245,5 @@ class App:
 root = Tk()
 App(root)
 root.mainloop()
+
 
